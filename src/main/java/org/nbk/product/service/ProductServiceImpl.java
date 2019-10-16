@@ -1,0 +1,50 @@
+package org.nbk.product.service;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.nbk.product.domain.Category;
+import org.nbk.product.domain.Product;
+import org.nbk.product.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+@Service
+public class ProductServiceImpl implements ProductService{
+
+	@Autowired
+	private ProductRepository productRepository;
+
+	@Override
+	public Product save(Product product) {
+		System.out.println(product);
+		product.setProductId(UUID.randomUUID().toString());
+		return productRepository.save(product);
+	}
+
+	@Override
+	public List<Product> getAllProducts() {
+		return productRepository.findAll();
+	}
+
+	@Override
+	public Product getById(String productId) {
+		return productRepository.getById(productId);
+	}
+
+	@Override
+	public List<Product> getByCategoryId(String categoryId) {
+		RestTemplate restTemplate = new RestTemplate();
+		ResponseEntity<Category> responseEntity = restTemplate.exchange("http://localhost:8082/api/v1/category/"+categoryId, HttpMethod.GET,null, Category.class);
+		Category category = responseEntity.getBody();
+		System.out.println(category);
+		
+		if(null==category || !categoryId.equals(category.getCategoryId())) {
+			return null;
+		}
+		return productRepository.getByCategoryId(categoryId);
+	}
+}
