@@ -7,6 +7,7 @@ import org.nbk.product.domain.Category;
 import org.nbk.product.domain.Product;
 import org.nbk.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ public class ProductServiceImpl implements ProductService{
 
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Value("${product.category}")
+	private String categoryURI;
 
 	@Override
 	public Product save(Product product) {
@@ -38,7 +42,7 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<Product> getByCategoryId(String categoryId) {
 		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<Category> responseEntity = restTemplate.exchange("http://localhost:8082/api/v1/category/"+categoryId, HttpMethod.GET,null, Category.class);
+		ResponseEntity<Category> responseEntity = restTemplate.exchange(categoryURI+categoryId, HttpMethod.GET,null, Category.class);
 		Category category = responseEntity.getBody();
 		System.out.println(category);
 		
