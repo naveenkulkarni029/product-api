@@ -18,6 +18,7 @@ public class ProductConfiguration {
 
 	@Bean
 	public Docket api() {
+
 		return new Docket(DocumentationType.SWAGGER_2).select()
 				.apis(RequestHandlerSelectors.basePackage("org.nbk.product.controller"))
 				.paths(PathSelectors.regex("/.*")).build().apiInfo(apiEndPointsInfo());
