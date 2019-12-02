@@ -1,0 +1,10 @@
+product:
+    category: http://localhost:8083/api/v1/category/
+server:
+    port: 8082
+spring:
+    data:
+        mongodb:
+            database: OSC
+            host: localhost
+            port: 27017
