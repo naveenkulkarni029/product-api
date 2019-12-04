@@ -101,7 +101,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.philips.airadiology.eventtrigger.ProductsApiApplication</mainClass>
+					<mainClass>org.nbk.product.ProductsApiApplication</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
