@@ -5,4 +5,4 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb://mongodb.default.svc.cluster.local/OSC
+      uri: mongodb://test:Test@123@mongodb.default.svc.cluster.local/OSC
