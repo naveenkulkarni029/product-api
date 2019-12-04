@@ -3,6 +3,6 @@ product:
 server:
     port: 8082
 spring:
-    data:
-        mongodb:
-        uri: mongodb://localhost:27017/OSC
+  data:
+    mongodb:
+      uri: mongodb://mongodb.default.svc.cluster.local/OSC
