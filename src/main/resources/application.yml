@@ -1,5 +1,5 @@
 product:
-  category: http://categories-api.default.svc.cluster.local/api/v1/category/
+  category: http://categories-api.default.svc.cluster.local:8083/api/v1/category/
 server:
   port: 8082
 spring:
