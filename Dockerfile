@@ -10,4 +10,4 @@ RUN mvn install -Dmaven.test.skip=true
 
 FROM base AS final
 COPY --from=maven target/products-api-1.0.0-SNAPSHOT.jar ./
-ENTRYPOINT ["java", "-jar", "products-api-1.0.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=prod", "-jar", "products-api-1.0.0-SNAPSHOT.jar"]

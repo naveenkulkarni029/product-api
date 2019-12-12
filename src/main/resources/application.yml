@@ -1,8 +1,56 @@
-product:
-  category: http://categories-api.default.svc.cluster.local:8080/api/v1/category/
-server:
-  port: 8080
 spring:
+  profiles: default
+  application:
+    name: products-api
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: products-db
+server:
+  port: 8082
+product:
+  category: http://localhost:8083/api/v1/category/
+  
+---
+spring:
+  profiles: dev
+  application:
+    name: products-api
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: products-dev-db
+server:
+  port: 8082
+product:
+  category: http://localhost:8083/api/v1/category/
+
+---
+spring:
+  profiles: test
+  application:
+    name: products-api
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: products-test-db
+server:
+  port: 8082
+product:
+  category: http://localhost:8083/api/v1/category/
+
+---
+spring: 
+  profiles: prod
+  application:
+    name: products-api
   data:
     mongodb:
       uri: mongodb://test:Test123@mongodb.default.svc.cluster.local/OSC
+server: 
+  port: 8080
+product:
+  category: http://categories-api.default.svc.cluster.local:8080/api/v1/category/

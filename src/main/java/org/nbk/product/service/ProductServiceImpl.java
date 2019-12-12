@@ -43,12 +43,6 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> getByCategoryId(String categoryId) {
 		RestTemplate restTemplate = new RestTemplate();
 		ResponseEntity<Category> responseEntity = restTemplate.exchange(categoryURI+categoryId, HttpMethod.GET,null, Category.class);
-		Category category = responseEntity.getBody();
-		System.out.println(category);
-		
-		if(null==category || !categoryId.equals(category.getCategoryId())) {
-			return null;
-		}
 		return productRepository.getByCategoryId(categoryId);
 	}
 }
