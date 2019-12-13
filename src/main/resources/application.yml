@@ -29,14 +29,44 @@ product:
 
 ---
 spring:
-  profiles: test
+  profiles: sit
   application:
     name: products-api
   data:
     mongodb:
       host: localhost
       port: 27017
-      database: products-test-db
+      database: products-sit-db
+server:
+  port: 8080
+product:
+  category: http://localhost:8083/api/v1/category/
+  
+---
+spring:
+  profiles: uat
+  application:
+    name: products-api
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: products-uat-db
+server:
+  port: 8080
+product:
+  category: http://localhost:8083/api/v1/category/
+  
+---
+spring:
+  profiles: pat
+  application:
+    name: products-api
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: products-pat-db
 server:
   port: 8080
 product:
