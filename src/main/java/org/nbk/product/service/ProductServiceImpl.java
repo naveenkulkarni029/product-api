@@ -9,16 +9,15 @@ import org.nbk.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private ProductRepository productRepository;
-	
+
 	@Value("${product.category}")
 	private String categoryURI;
 
@@ -42,7 +41,7 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<Product> getByCategoryId(String categoryId) {
 		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<Category> responseEntity = restTemplate.exchange(categoryURI+categoryId, HttpMethod.GET,null, Category.class);
+		restTemplate.exchange(categoryURI + categoryId, HttpMethod.GET, null, Category.class);
 		return productRepository.getByCategoryId(categoryId);
 	}
 }
