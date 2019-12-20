@@ -19,7 +19,7 @@ public class ProductsControllerAdvice {
 	@ExceptionHandler(value = { HttpClientErrorException.class })
 	public ResponseEntity<ServiceError> handleClientException(HttpClientErrorException exception) throws Exception {
 		ServiceError se = objectMapper.readValue(exception.getResponseBodyAsString(), ServiceError.class);
-		ServiceError serviceError = new ServiceError(HttpStatus.NOT_FOUND.toString(), se.getMessage());
+		ServiceError serviceError = new ServiceError(HttpStatus.NOT_FOUND.toString(), se.getMessage(), se.getUri());
 		return new ResponseEntity<ServiceError>(serviceError, HttpStatus.NOT_FOUND);
 	}
 

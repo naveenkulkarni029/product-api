@@ -8,7 +8,10 @@ spring:
       port: 27017
       database: products-db
 server:
+  host: http://localhost
   port: 8080
+  servlet:
+    context-path: /api/v1/product
 product:
   category: http://localhost:8083/api/v1/category/
   
@@ -23,7 +26,10 @@ spring:
       port: 27017
       database: products-dev-db
 server:
+  host: http://localhost
   port: 8080
+  servlet:
+    context-path: /api/v1/product
 product:
   category: http://localhost:8083/api/v1/category/
 
@@ -38,7 +44,10 @@ spring:
       port: 27017
       database: products-sit-db
 server:
+  host: http://localhost
   port: 8080
+  servlet:
+    context-path: /api/v1/product
 product:
   category: http://localhost:8083/api/v1/category/
   
@@ -53,7 +62,10 @@ spring:
       port: 27017
       database: products-uat-db
 server:
+  host: http://localhost
   port: 8080
+  servlet:
+    context-path: /api/v1/product
 product:
   category: http://localhost:8083/api/v1/category/
   
@@ -68,7 +80,10 @@ spring:
       port: 27017
       database: products-pat-db
 server:
+  host: http://localhost
   port: 8080
+  servlet:
+    context-path: /api/v1/product
 product:
   category: http://localhost:8083/api/v1/category/
 
@@ -80,7 +95,10 @@ spring:
   data:
     mongodb:
       uri: mongodb://test:Test123@mongodb.default.svc.cluster.local/OSC
-server: 
+server:
+  host: http://products-api.default.svc.local 
   port: 8080
+  servlet:
+    context-path: /api/v1/product
 product:
   category: http://categories-api.default.svc.cluster.local:8080/api/v1/category/

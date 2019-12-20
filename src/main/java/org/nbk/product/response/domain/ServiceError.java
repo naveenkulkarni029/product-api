@@ -1,18 +1,22 @@
 package org.nbk.product.response.domain;
 
+import java.net.URI;
+
 public class ServiceError {
 
 	private String httpStatus;
 	private String message;
+	private URI uri;
 
 	public ServiceError() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ServiceError(String httpStatus, String message) {
+	public ServiceError(String httpStatus, String message, URI uri) {
 		this.httpStatus = httpStatus;
 		this.message = message;
+		this.uri = uri;
 	}
 
 	/**
@@ -45,6 +49,21 @@ public class ServiceError {
 		this.message = message;
 	}
 
+	/**
+	 * @return the uri
+	 */
+	public URI getUri() {
+		return uri;
+	}
+
+	/**
+	 * @param uri
+	 *            the uri to set
+	 */
+	public void setUri(URI uri) {
+		this.uri = uri;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -57,6 +76,8 @@ public class ServiceError {
 		builder.append(httpStatus);
 		builder.append(", message=");
 		builder.append(message);
+		builder.append(", uri=");
+		builder.append(uri);
 		builder.append("]");
 		return builder.toString();
 	}
