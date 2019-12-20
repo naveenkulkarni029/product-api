@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 @Service
@@ -39,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> getByCategoryId(String categoryId) {
+	public List<Product> getByCategoryId(String categoryId) throws HttpClientErrorException, HttpServerErrorException {
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.exchange(categoryURI + categoryId, HttpMethod.GET, null, Category.class);
 		return productRepository.getByCategoryId(categoryId);
