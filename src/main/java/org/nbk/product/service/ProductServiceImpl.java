@@ -17,11 +17,16 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-	@Autowired
+	
 	private ProductRepository productRepository;
 
 	@Value("${product.category}")
 	private String categoryURI;
+
+	@Autowired
+	public ProductServiceImpl(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
 
 	@Override
 	public Product save(Product product) {
