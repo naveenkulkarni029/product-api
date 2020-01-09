@@ -3,7 +3,10 @@ WORKDIR /products-api
 EXPOSE 8080
 
 FROM maven:3.5-jdk-8 as maven
-RUN mvn clean install package
+COPY ./pom.xml ./pom.xml
+RUN mvn package
+COPY ./src ./src
+RUN mvn install
 
 FROM base AS final
 COPY --from=maven target/products-api-1.0.0-SNAPSHOT.jar ./
