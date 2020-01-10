@@ -17,7 +17,6 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-	
 	private ProductRepository productRepository;
 
 	@Value("${product.category}")

@@ -21,12 +21,12 @@ import io.swagger.annotations.ApiResponses;
 public class ProductController {
 
 	private ProductService productSerivce;
-	
+
 	@Autowired
 	public ProductController(ProductService productService) {
 		this.productSerivce = productService;
 	}
-	
+
 	@ApiOperation(value = "Add a Product")
 	@PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
