@@ -39,7 +39,7 @@ public class ProductsApiRestControllerTests {
 	public void getProductDetailsTest() throws Exception {
 
 		when(productService.getById("1")).thenReturn(product());
-		MockHttpServletResponse response = this.mockMvc.perform(get("/1")).andReturn().getResponse();
+		MockHttpServletResponse response = this.mockMvc.perform(get("/products/1")).andReturn().getResponse();
 
 		assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
 		ObjectMapper mapper = new ObjectMapper();

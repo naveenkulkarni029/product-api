@@ -28,7 +28,7 @@ public class ProductController {
 	}
 
 	@ApiOperation(value = "Add a Product")
-	@PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
 		System.out.println(product);
 		Product savedProduct = productSerivce.save(product);
@@ -38,7 +38,7 @@ public class ProductController {
 	@ApiOperation(value = "View the Product", response = Product.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved product"),
 			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
-	@GetMapping(value = "/{productId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/products/{productId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Product> getProductById(@PathVariable String productId) {
 		Product product = productSerivce.getById(productId);
 		return ResponseEntity.ok(product);
@@ -47,13 +47,13 @@ public class ProductController {
 	@ApiOperation(value = "View a list of available Products", response = List.class)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Successfully retrieved list"),
 			@ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
-	@GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Product>> getAllProduct() {
 		List<Product> products = productSerivce.getAllProducts();
 		return ResponseEntity.ok(products);
 	}
 
-	@GetMapping(value = "/all/category/{categoryId}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/products/category/{categoryId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Product>> getByCategoryId(@PathVariable String categoryId) {
 		List<Product> products = productSerivce.getByCategoryId(categoryId);
 		return ResponseEntity.ok(products);
