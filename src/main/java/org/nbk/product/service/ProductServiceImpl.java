@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
 
 	private ProductRepository productRepository;
 
-	@Value("${product.category}")
+	@Value("${products.category}")
 	private String categoryURI;
 
 	@Autowired
